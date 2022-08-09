@@ -1,0 +1,51 @@
+<h1>Search Results</h1>
+
+<br>
+
+<form action="/search">
+  <div>
+    <b>Search Name and species:</b><br />
+    <input type="text" name="q" placeholder="<%= params[:q]%>" aria-label="Search">
+    <button type="submit">
+      Search
+    </button>
+  </div>
+<!--  <div>-->
+<!--    <p>-->
+<!--      <b>Gender:</b><br />-->
+<!--      <div id="radio_buttons">-->
+        <%#= radio_button_tag 'exp', 1 %>
+        <%#= radio_button_tag 'exp', 2 %>
+<!--      </div>-->
+<!--      <input type="radio" id="male" name="gender" value="m">-->
+<!--      <label for="male">Male</label>-->
+<!--      <input type="radio" id="female" name="gender" value="f">-->
+<!--      <label for="female">Female</label>-->
+<!--    </p>-->
+<!--  </div>-->
+  <button type="submit">
+    Search
+  </button>
+</form>
+
+<br>
+
+<% unless @search_characters.nil? %>
+  <ul>
+    <% @search_characters.each do |character| %>
+      <li>
+        <h4><%= link_to character.name, character %></h4>
+        <p>Species: <%= character.species %></p>
+      </li>
+    <% end %>
+  </ul>
+  <%= will_paginate @search_characters %>
+<% end %>
+<% if @search_characters.nil? %>
+  <p> There are no characters in the database.</p>
+<% end %>
+
+<br>
+
+<%= link_to '<-- Go Back', '/'%>
+
