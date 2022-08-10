@@ -21,6 +21,10 @@ class CharactersController < ApplicationController
     end
   end
 
+  def refresh
+    helpers.create_characters("https://rickandmortyapi.com/api/character")
+  end
+
   def search
     @search_characters = Character.where("name LIKE ? OR species LIKE ? ","%" + params[:q].to_s + "%","%" + params[:q].to_s + "%").paginate(page: params[:page], per_page: 5)
   end

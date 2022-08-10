@@ -16,9 +16,7 @@
     <% @characters.each do |character| %>
       <li style="color: blue">
         <h4><%= link_to character.name, character %></h4>
-        <p>Status: <%= character.status %></p>
         <p>Species: <%= character.species %></p>
-        <p>Gender: <%= character.gender %></p>
       </li>
     <% end %>
   </ul>
@@ -30,5 +28,5 @@
 
 <br>
 
-<!--<button>Refresh</button>-->
+<%= button_to 'Update Data', 'refresh', method: :post %>
 

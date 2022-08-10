@@ -5,5 +5,6 @@ Rails.application.routes.draw do
 
   resources :characters
   get "search", to: "characters#search"
+  post "refresh", to: "characters#refresh", as: 'refresh'
 
 end
